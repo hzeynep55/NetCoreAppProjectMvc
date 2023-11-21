@@ -30,12 +30,19 @@ namespace NetCoreAppProjectMvc.Web.Controllers
 			return RedirectToAction("Index");
 		}
 
+		[HttpGet]
 		public IActionResult Add()
 		{
 			return View();
 		}
 
-		public IActionResult Update(int id)
+		[HttpPut]
+        public IActionResult SaveProduct()
+        {
+            return View();
+        }
+
+        public IActionResult Update(int id)
 		{
 			return View();
 		}
