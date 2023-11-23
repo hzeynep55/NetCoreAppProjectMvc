@@ -36,10 +36,29 @@ namespace NetCoreAppProjectMvc.Web.Controllers
 			return View();
 		}
 
-		[HttpPut]
-        public IActionResult SaveProduct()
+		[HttpPost]
+        public IActionResult Add(Product product)
         {
-            return View();
+			//1.yöntem
+			//var name = HttpContext.Request.Form["Name"].ToString();
+			//var price= decimal.Parse(HttpContext.Request.Form["Price"].ToString());
+			//var stock= int.Parse(HttpContext.Request.Form["Stock"].ToString());
+			//var color= HttpContext.Request.Form["Color"].ToString();
+
+			//2.Yöntem
+			/*Product product = new Product()
+			//{
+			//	Name = Name,
+			//    Price=Price,
+				Stock=Stock,
+				Color=Color
+			};*/
+
+			_context.Products.Add(product);
+			_context.SaveChanges();
+
+
+			return RedirectToAction("Index");
         }
 
         public IActionResult Update(int id)
