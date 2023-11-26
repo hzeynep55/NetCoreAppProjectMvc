@@ -57,13 +57,26 @@ namespace NetCoreAppProjectMvc.Web.Controllers
 			_context.Products.Add(product);
 			_context.SaveChanges();
 
-
-			return RedirectToAction("Index");
+            TempData["status"] = "Ürün başarı ile eklendi.";
+            return RedirectToAction("Index");
         }
 
+		[HttpGet]
         public IActionResult Update(int id)
 		{
-			return View();
-		}
+			var product = _context.Products.Find(id);
+			return View(product);
+        }
+
+		[HttpPost]
+		public IActionResult Update(Product product)
+		{
+
+			_context.Products.Update(product);
+			_context.SaveChanges();
+
+			TempData["status"] = "Ürün başarı ile güncellendi.";
+            return RedirectToAction("Index");
+        }
 	}
 }
