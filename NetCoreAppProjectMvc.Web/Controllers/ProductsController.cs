@@ -69,9 +69,9 @@ namespace NetCoreAppProjectMvc.Web.Controllers
         }
 
 		[HttpPost]
-		public IActionResult Update(Product product)
+		public IActionResult Update(Product product, int productId)
 		{
-
+			product.Id=productId;
 			_context.Products.Update(product);
 			_context.SaveChanges();
 
