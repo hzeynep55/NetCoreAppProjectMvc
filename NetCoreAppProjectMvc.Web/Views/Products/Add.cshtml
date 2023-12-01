@@ -22,7 +22,7 @@
 
     <div class="mb-3">
         <label for="Name" class="form-label">Ürün Stoğu</label>
-        <input class="form-control" asp-for="Stock">
+        <input type="text" class="form-control" asp-for="Stock">
 
     </div>
 
@@ -32,7 +32,24 @@
 
     </div>
 
+    <div class="form-check">
+        <input class="form-check-input" asp-for="isPublish">
+        <label class="form-check-label" for="flexCheckDefault">
+            Yayınla
+        </label>
 
+        @foreach (var item in @ViewBag.Expire as List<string>)
+        {
+            <div class="form-check"  >
+                <input class="form-check-input" asp-for="Expire" value="@item">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    @item
+                </label>
+            </div>
+        }
+    </div>
+
+    
     <button type="button" class="btn btn-primary">Ürün Kaydet</button>
 
 

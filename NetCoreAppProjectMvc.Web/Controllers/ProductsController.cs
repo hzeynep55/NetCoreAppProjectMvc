@@ -33,6 +33,7 @@ namespace NetCoreAppProjectMvc.Web.Controllers
 		[HttpGet]
 		public IActionResult Add()
 		{
+			ViewBag.Expire = new List<string>() {"1 Ay","2 Ay","6 Ay","12 Ay" };
 			return View();
 		}
 

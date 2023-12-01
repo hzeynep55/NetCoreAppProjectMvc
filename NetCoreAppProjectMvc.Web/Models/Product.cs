@@ -9,6 +9,9 @@
 
         public string? Color { get; set; }
       
+        public bool isPublish { get; set; }
+
+        public string Expire { get; set; }
 
     }
 }
