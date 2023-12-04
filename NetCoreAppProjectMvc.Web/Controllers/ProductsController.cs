@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using NetCoreAppProjectMvc.Web.Models;
 using NetCoreAppProjectMvc.Web.Repository;
 
@@ -35,8 +36,22 @@ namespace NetCoreAppProjectMvc.Web.Controllers
 		{
 			ViewBag.Expire = new Dictionary<string, int>()
 			{{ "1 Ay", 1},{"3 Ay",3},{"6 Ay",6 },{"12 Ay",12} };
-			return View();
-		}
+			
+
+			ViewBag.ColorSelect = new SelectList(new List<ColorSelectList>() {
+             new() {Data="Beyaz", Value="Beyaz"},
+             new() {Data="Kahverengi", Value="Kahverengi"},
+             new() {Data="Kırmızı", Value="Kırmızı"},
+             new() {Data="Mavi", Value="Mavi"},
+             new() {Data="Mor", Value="Mor"},
+             new() {Data="Sarı", Value="Sarı"},
+             new() {Data="Siyah", Value="Siyah"}
+
+
+            },"Value","Data");
+
+            return View();
+        }
 
 		[HttpPost]
         public IActionResult Add(Product product)
