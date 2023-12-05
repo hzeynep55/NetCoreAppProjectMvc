@@ -63,6 +63,12 @@
     <textarea asp-for="Description" class="form-control" placeholder="Ürün açıklama"  style="height: 100px"></textarea>
         <label asp-for="Description">Comments</label>
     </div>
+
+    <div class="mb-3">
+        <label asp-for="PublishDate" class="form-label">Ürün Yayınlanma Tarihi</label>
+        <input class="form-control" asp-for="PublishDate">
+
+    </div>
     
     <button type="submit" class="btn btn-primary">Ürün Kaydet</button>
 

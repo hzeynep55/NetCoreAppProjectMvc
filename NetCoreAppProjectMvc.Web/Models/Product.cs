@@ -9,7 +9,8 @@
 
         public string Description { get; set; }
         public string? Color { get; set; }
-      
+
+        public DateTime? PublishDate { get; set; }
         public bool isPublish { get; set; }
 
         public string Expire { get; set; }
