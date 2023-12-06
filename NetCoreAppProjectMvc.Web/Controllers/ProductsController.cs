@@ -68,7 +68,24 @@ namespace NetCoreAppProjectMvc.Web.Controllers
         public IActionResult Update(int id)
 		{
 			var product = _context.Products.Find(id);
-			return View(product);
+
+			ViewBag.ExpireValue = product.Expire;
+            ViewBag.Expire = new Dictionary<string, int>()
+            {{ "1 Ay", 1},{"3 Ay",3},{"6 Ay",6 },{"12 Ay",12} };
+
+
+            ViewBag.ColorSelect = new SelectList(new List<ColorSelectList>() {
+             new() {Data="Beyaz", Value="Beyaz"},
+             new() {Data="Kahverengi", Value="Kahverengi"},
+             new() {Data="Kırmızı", Value="Kırmızı"},
+             new() {Data="Mavi", Value="Mavi"},
+             new() {Data="Mor", Value="Mor"},
+             new() {Data="Sarı", Value="Sarı"},
+             new() {Data="Siyah", Value="Siyah"}
+
+
+            }, "Value", "Data", product.Color);
+            return View(product);
         }
 
 		[HttpPost]
