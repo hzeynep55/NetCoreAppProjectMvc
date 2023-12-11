@@ -7,7 +7,7 @@ using NetCoreAppProjectMvc.Web.ViewModels;
 
 namespace NetCoreAppProjectMvc.Web.Controllers
 {
-	public class ProductsController : Controller
+    public class ProductsController : Controller
 	{
 		private AppDbContext _context;
 		private readonly ProductRepository _productRepository;
@@ -57,14 +57,37 @@ namespace NetCoreAppProjectMvc.Web.Controllers
         }
 
 		[HttpPost]
-        public IActionResult Add(Product product)
+        public IActionResult Add(ProductViewModel product)
         {
-	
-			_context.Products.Add(product);
-			_context.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                _context.Products.Add(_mapper.Map<Product>(product));
+                _context.SaveChanges();
 
-            TempData["status"] = "Ürün başarı ile eklendi.";
-            return RedirectToAction("Index");
+                TempData["status"] = "Ürün başarı ile eklendi.";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewBag.Expire = new Dictionary<string, int>()
+            {{ "1 Ay", 1},{"3 Ay",3},{"6 Ay",6 },{"12 Ay",12} };
+
+
+                ViewBag.ColorSelect = new SelectList(new List<ColorSelectList>() {
+             new() {Data="Beyaz", Value="Beyaz"},
+             new() {Data="Kahverengi", Value="Kahverengi"},
+             new() {Data="Kırmızı", Value="Kırmızı"},
+             new() {Data="Mavi", Value="Mavi"},
+             new() {Data="Mor", Value="Mor"},
+             new() {Data="Sarı", Value="Sarı"},
+             new() {Data="Siyah", Value="Siyah"}
+
+
+            }, "Value", "Data");
+                return View();
+            }
+	
+			
         }
 
 		[HttpGet]

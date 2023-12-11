@@ -13,7 +13,7 @@
         public DateTime? PublishDate { get; set; }
         public bool isPublish { get; set; }
 
-        public string Expire { get; set; }
+        public int Expire { get; set; }
 
     }
 }

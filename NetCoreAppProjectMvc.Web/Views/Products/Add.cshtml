@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Add";
 }
-@model Product
+@model ProductViewModel
 <h1>Ürün Ekleme</h1>
 
 
@@ -11,18 +11,21 @@
     <div class="mb-3">
         <label asp-for="Name" class="form-label">Ürün İsmi</label>
         <input class="form-control" asp-for="Name">
-       
+        <span class="text-danger" asp-validation-for="Name"></span>
     </div>
+  
 
     <div class="mb-3">
         <label asp-for="Price" class="form-label">Ürün Fiyatı</label>
         <input class="form-control" asp-for="Price">
+        <span class="text-danger" asp-validation-for="Price"></span>
 
     </div>
 
     <div class="mb-3">
         <label asp-for="Stock" class="form-label">Ürün Stoğu</label>
         <input type="text" class="form-control" asp-for="Stock">
+        <span class="text-danger" asp-validation-for="Stock"></span>
 
     </div>
 
@@ -34,6 +37,7 @@
 
         <option value="">Renk seçiniz</option>
         </select>
+         <span class="text-danger" asp-validation-for="Color"></span>
 
     </div>
 
@@ -57,17 +61,19 @@
                 </label>
             </div>
         }
+         <span class="text-danger" asp-validation-for="Expire"></span>
     </div>
 
     <div class="form-floating mb-3">
     <textarea asp-for="Description" class="form-control" placeholder="Ürün açıklama"  style="height: 100px"></textarea>
         <label asp-for="Description">Comments</label>
+        <span class="text-danger" asp-validation-for="Description"></span>
     </div>
 
     <div class="mb-3">
         <label asp-for="PublishDate" class="form-label">Ürün Yayınlanma Tarihi</label>
         <input class="form-control" asp-for="PublishDate">
-
+         <span class="text-danger" asp-validation-for="PublishDate"></span>
     </div>
     
     <button type="submit" class="btn btn-primary">Ürün Kaydet</button>
