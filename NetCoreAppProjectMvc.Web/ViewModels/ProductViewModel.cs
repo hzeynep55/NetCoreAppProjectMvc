@@ -10,6 +10,7 @@ namespace NetCoreAppProjectMvc.Web.ViewModels
         [StringLength(50, ErrorMessage ="İsim alanına en fazla 50 karakter girilebilir.")]
         public string? Name { get; set; }
 
+        [RegularExpression(@"^[0-9]+(\.[0-9]{1,2})", ErrorMessage =("Fiyat alanında noktadan sonra 2 basamak olmalıdır"))]
         [Required(ErrorMessage = "Fiyat alanı boş bırakılamaz.")]
         [Range(1, 1000, ErrorMessage = "1-1000 arasında değer giriniz.")]
         public decimal? Price { get; set; }
